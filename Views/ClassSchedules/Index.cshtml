@@ -1,0 +1,53 @@
+﻿@model IEnumerable<University.Models.ClassSchedule>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>ClassSchedules</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Roomnumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Classtime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Course)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lecturer)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Roomnumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Classtime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.Courseid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lecturer.Lecturerid)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Scheduleid">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Scheduleid">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Scheduleid">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
